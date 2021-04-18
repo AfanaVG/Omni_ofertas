@@ -6,5 +6,122 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gHor1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gHor2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gHor3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gHor4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gHor5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gVer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gVer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gVer3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gVer4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7"
+        />
+
+    <EditText
+        android:id="@+id/edEmail_login"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/gHor2"
+
+        app:layout_constraintEnd_toStartOf="@+id/gVer2"
+        app:layout_constraintStart_toStartOf="@+id/gVer1"
+        app:layout_constraintTop_toTopOf="@+id/gHor3" />
+
+    <EditText
+        android:id="@+id/edPass_login"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/gHor1"
+        app:layout_constraintEnd_toStartOf="@+id/gVer2"
+        app:layout_constraintStart_toStartOf="@+id/gVer1"
+        app:layout_constraintTop_toTopOf="@+id/gHor2" />
+
+    <Button
+        android:id="@+id/btEntrar_login"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:text="@string/aceptar"
+        app:layout_constraintBottom_toTopOf="@+id/gHor4"
+        app:layout_constraintEnd_toStartOf="@+id/gVer4"
+        app:layout_constraintStart_toStartOf="@+id/gVer3"
+        app:layout_constraintTop_toBottomOf="@+id/gHor4" />
+
+    <Button
+        android:id="@+id/btRegistro_login"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:text="@string/registro"
+        app:layout_constraintBottom_toTopOf="@+id/gHor5"
+        app:layout_constraintEnd_toStartOf="@+id/gVer4"
+        app:layout_constraintStart_toStartOf="@+id/gVer3"
+        app:layout_constraintTop_toBottomOf="@+id/gHor5" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

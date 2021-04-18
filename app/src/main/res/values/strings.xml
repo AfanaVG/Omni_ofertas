@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Omni_ofertas</string>
+    <string name="email">example@gmail.com</string>
+    <string name="registro">Registro</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="password">Contraseña</string>
 </resources>
