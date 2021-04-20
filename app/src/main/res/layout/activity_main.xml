@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity">
+    tools:context=".ui.MainActivity"
+    android:background="@drawable/layout_fondo"
+    >
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gHor1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5"
+        app:layout_constraintGuide_percent="0.52"
         />
 
     <androidx.constraintlayout.widget.Guideline
@@ -35,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6"
+        app:layout_constraintGuide_percent="0.65"
         />
 
     <androidx.constraintlayout.widget.Guideline
@@ -82,8 +84,8 @@
         android:id="@+id/edEmail_login"
         android:layout_width="0dp"
         android:layout_height="0dp"
-
-
+        style="@style/EdMenu"
+        android:autofillHints="@string/email"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/gHor2"
@@ -96,32 +98,49 @@
         android:id="@+id/edPass_login"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:autofillHints="@string/password"
+        style="@style/EdMenu"
         android:hint="@string/password"
         android:inputType="textPassword"
+        android:layout_marginTop="15dp"
         app:layout_constraintBottom_toTopOf="@+id/gHor1"
         app:layout_constraintEnd_toStartOf="@+id/gVer2"
         app:layout_constraintStart_toStartOf="@+id/gVer1"
         app:layout_constraintTop_toTopOf="@+id/gHor2" />
 
-    <Button
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btEntrar_login"
         android:layout_width="120dp"
         android:layout_height="80dp"
+        style="@style/BtMenu"
         android:text="@string/aceptar"
         app:layout_constraintBottom_toTopOf="@+id/gHor4"
         app:layout_constraintEnd_toStartOf="@+id/gVer4"
         app:layout_constraintStart_toStartOf="@+id/gVer3"
         app:layout_constraintTop_toBottomOf="@+id/gHor4" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btRegistro_login"
         android:layout_width="120dp"
         android:layout_height="80dp"
         android:text="@string/registro"
+        style="@style/BtMenu"
         app:layout_constraintBottom_toTopOf="@+id/gHor5"
         app:layout_constraintEnd_toStartOf="@+id/gVer4"
         app:layout_constraintStart_toStartOf="@+id/gVer3"
         app:layout_constraintTop_toBottomOf="@+id/gHor5" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="145dp"
+        android:layout_height="181dp"
+        app:layout_constraintBottom_toTopOf="@+id/gHor3"
+        app:layout_constraintEnd_toStartOf="@+id/gVer4"
+        app:layout_constraintStart_toStartOf="@+id/gVer3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/etiqueta2"
+        android:contentDescription="@string/logo"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
