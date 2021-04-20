@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.RegistroActivity">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gHor1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gHor2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gHor3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gHor4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gHor5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gHor6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gHor7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gHor8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.77"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gHor9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gVer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gVer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1"
+        />
+
+    <EditText
+        android:id="@+id/edEmail_Regis"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autofillHints="@string/email"
+        style="@style/EdMenu"
+        android:hint="@string/email"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/gHor2"
+        app:layout_constraintEnd_toStartOf="@+id/gVer2"
+        app:layout_constraintStart_toStartOf="@+id/gVer1"
+        app:layout_constraintTop_toTopOf="@+id/gHor1" />
+
+    <EditText
+        android:id="@+id/edNombre_Regis"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autofillHints="@string/nombre"
+        style="@style/EdMenu"
+        android:hint="@string/nombre"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/gHor3"
+        app:layout_constraintEnd_toStartOf="@+id/gVer2"
+        app:layout_constraintStart_toStartOf="@+id/gVer1"
+        app:layout_constraintTop_toTopOf="@+id/gHor2" />
+
+    <EditText
+        android:id="@+id/edApellido_Regis"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autofillHints="@string/apellidos"
+        style="@style/EdMenu"
+        android:hint="@string/apellidos"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/gHor4"
+        app:layout_constraintEnd_toStartOf="@+id/gVer2"
+        app:layout_constraintStart_toStartOf="@+id/gVer1"
+        app:layout_constraintTop_toTopOf="@+id/gHor3" />
+
+    <EditText
+        android:id="@+id/edTelef_Regis"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autofillHints="@string/telefono"
+        style="@style/EdMenu"
+        android:hint="@string/telefono"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/gHor5"
+        app:layout_constraintEnd_toStartOf="@+id/gVer2"
+        app:layout_constraintStart_toStartOf="@+id/gVer1"
+        app:layout_constraintTop_toTopOf="@+id/gHor4" />
+
+    <EditText
+        android:id="@+id/edPass_Regis"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autofillHints="@string/password"
+        style="@style/EdMenu"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/gHor6"
+        app:layout_constraintEnd_toStartOf="@+id/gVer2"
+        app:layout_constraintStart_toStartOf="@+id/gVer1"
+        app:layout_constraintTop_toTopOf="@+id/gHor5" />
+
+    <EditText
+        android:id="@+id/edPassR_Regis"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autofillHints="@string/password_repetir"
+        style="@style/EdMenu"
+        android:hint="@string/password_repetir"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/gHor7"
+        app:layout_constraintEnd_toStartOf="@+id/gVer2"
+        app:layout_constraintStart_toStartOf="@+id/gVer1"
+        app:layout_constraintTop_toTopOf="@+id/gHor6" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btConfirmar_regis"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        style="@style/BtMenu"
+        android:text="@string/confirmar"
+        app:layout_constraintBottom_toTopOf="@+id/gHor8"
+        app:layout_constraintEnd_toStartOf="@+id/gVer2"
+        app:layout_constraintStart_toStartOf="@+id/gVer1"
+        app:layout_constraintTop_toBottomOf="@+id/gHor8" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btLimpiar_regis"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        style="@style/BtMenu"
+        android:text="@string/limpiar"
+        app:layout_constraintBottom_toTopOf="@+id/gHor9"
+        app:layout_constraintEnd_toStartOf="@+id/gVer2"
+        app:layout_constraintStart_toStartOf="@+id/gVer1"
+        app:layout_constraintTop_toBottomOf="@+id/gHor9" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

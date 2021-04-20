@@ -2,6 +2,12 @@
     <string name="app_name">Omni_ofertas</string>
     <string name="email">example@gmail.com</string>
     <string name="registro">Registro</string>
-    <string name="aceptar">Aceptar</string>
+    <string name="confirmar">Confirmar</string>
     <string name="password">Contraseña</string>
+    <string name="nombre">Introduzca nombre</string>
+    <string name="password_repetir">Repetir contraseña</string>
+    <string name="apellidos">Introduzca apellidos</string>
+    <string name="telefono">Introduzca número de telefono</string>
+    <string name="logo">LOGO</string>
+    <string name="limpiar">Limpiar</string>
 </resources>
