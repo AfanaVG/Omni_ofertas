@@ -38,6 +38,7 @@ android {
 dependencies {
 
     implementation 'com.google.firebase:firebase-auth:20.0.4'//Autentificacion de usuario
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'//Autentificacion de usuario por gmail
     implementation 'com.google.firebase:firebase-analytics-ktx'//Analytics de firebase
     implementation platform('com.google.firebase:firebase-bom:27.1.0')//Conexion con firebase
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

@@ -1,7 +1,10 @@
 package com.example.omni_ofertas.ui
 
+import android.content.Context
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.view.Menu
+import android.view.View
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
@@ -14,12 +17,16 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.omni_ofertas.R
+import kotlinx.android.synthetic.main.activity_menu_inicio.*
+import kotlinx.android.synthetic.main.activity_menu_inicio.view.*
+import kotlinx.android.synthetic.main.content_main.*
 
 enum class ProviderType{
-    BASIC
+    BASIC,
+    GOOGLE
 }
 
-class MenuInicio : AppCompatActivity() {
+class MenuInicio : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
 
@@ -28,6 +35,7 @@ class MenuInicio : AppCompatActivity() {
         setContentView(R.layout.activity_menu_inicio)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
+
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
@@ -46,7 +54,29 @@ class MenuInicio : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+
+        //Firebase setup
+
+        val bundle = intent.extras
+        val email = bundle?.getString("email")
+        val provider = bundle?.getString("provider")
+        setup(email ?: "",provider ?: "")
+
+        //Guardar datos
+        val prefs = getSharedPreferences(getString(R.string.prefs_file),Context.MODE_PRIVATE).edit()
+        prefs.putString("email",email)
+        prefs.putString("provider",provider)
+        prefs.apply()
     }
+
+    private fun setup(email: String, provider:String){
+        title = "Inicio"
+
+
+
+    }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -57,5 +87,9 @@ class MenuInicio : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    override fun onClick(v: View?) {
+
     }
 }

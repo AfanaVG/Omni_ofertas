@@ -172,24 +172,41 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btConfirmar_regis"
+        style="@style/BtMenu"
         android:layout_width="120dp"
         android:layout_height="80dp"
-        style="@style/BtMenu"
         android:text="@string/confirmar"
         app:layout_constraintBottom_toTopOf="@+id/gHor8"
         app:layout_constraintEnd_toStartOf="@+id/gVer2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/gVer1"
+        app:layout_constraintTop_toBottomOf="@+id/gHor8"
+        app:layout_constraintVertical_bias="0.637" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btLimpiar_regis"
+        style="@style/BtMenu"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        android:text="@string/limpiar"
+        app:layout_constraintBottom_toTopOf="@+id/gHor8"
+        app:layout_constraintEnd_toStartOf="@+id/gVer2"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/gVer1"
         app:layout_constraintTop_toBottomOf="@+id/gHor8" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btLimpiar_regis"
-        android:layout_width="120dp"
-        android:layout_height="80dp"
+        android:id="@+id/btRegistroGmail"
         style="@style/BtMenu"
-        android:text="@string/limpiar"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:drawableLeft="@drawable/gmail_logo"
+        android:text="@string/confirmarGmail"
         app:layout_constraintBottom_toTopOf="@+id/gHor9"
         app:layout_constraintEnd_toStartOf="@+id/gVer2"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/gVer1"
-        app:layout_constraintTop_toBottomOf="@+id/gHor9" />
+        app:layout_constraintTop_toBottomOf="@+id/gHor9"
+        app:layout_constraintVertical_bias="0.45" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
