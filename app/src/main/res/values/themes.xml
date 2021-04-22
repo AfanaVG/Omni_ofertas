@@ -28,9 +28,14 @@
         <item name="android:paddingLeft">5dp</item>
     </style>
 
+    <style name="Theme.Omni_ofertas.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
+    <style name="Theme.Omni_ofertas.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-
+    <style name="Theme.Omni_ofertas.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>

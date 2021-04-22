@@ -10,7 +10,7 @@ import com.example.omni_ofertas.R
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
-
+import kotlinx.android.synthetic.main.activity_registro.*
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -36,25 +36,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         when(view){
             btRegistro_login ->accederRegistro()
-            btEntrar_login -> signUp()
+            btEntrar_login -> registrarUsuario()
         }
     }
 
-
-    private fun accederRegistro(){
-
-        val intent = Intent(this,RegistroActivity::class.java)
-        startActivity(intent)
-    }
-
-    private fun signUp(){
+    private fun registrarUsuario(){
 
         if (edEmail_login.text.isNotEmpty() && edPass_login.text.isNotEmpty()){
-            FirebaseAuth.getInstance().createUserWithEmailAndPassword(edEmail_login.text.toString()
+            FirebaseAuth.getInstance().signInWithEmailAndPassword(edEmail_login.text.toString()
                 ,edPass_login.text.toString()).addOnCompleteListener{
 
                 if (it.isSuccessful){
-
+                    autentificaionCompletada(it.result?.user?.email?:"",ProviderType.BASIC)
                 }else{
                     errorAutentificacion()
                 }
@@ -74,6 +67,26 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
+
+    private fun autentificaionCompletada(email:String,provider:ProviderType){
+
+        val homeIntent = Intent(this,MenuInicio::class.java).apply {
+            putExtra("email",email)
+            putExtra("provider",provider.name)
+        }
+
+        startActivity(homeIntent)
+
+    }
+
+
+    private fun accederRegistro(){
+
+        val intent = Intent(this,RegistroActivity::class.java)
+        startActivity(intent)
+    }
+
+
 
 
 }
