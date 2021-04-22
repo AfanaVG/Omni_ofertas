@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "824656415994",
+    "project_id": "omnioffer",
+    "storage_bucket": "omnioffer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:824656415994:android:3a3ddad103de38cf388d43",
+        "android_client_info": {
+          "package_name": "com.example.omni_ofertas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "824656415994-ath569mmnrigeuimugt9287clc9ms3iq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmveLnEptKJtzv2aRd_NWABUniMCkJcWY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "824656415994-ath569mmnrigeuimugt9287clc9ms3iq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
