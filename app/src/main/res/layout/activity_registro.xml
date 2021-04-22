@@ -97,12 +97,11 @@
 
     <EditText
         android:id="@+id/edEmail_Regis"
+        style="@style/EdMenu"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:autofillHints="@string/email"
-        style="@style/EdMenu"
         android:hint="@string/email"
-        android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/gHor2"
         app:layout_constraintEnd_toStartOf="@+id/gVer2"
         app:layout_constraintStart_toStartOf="@+id/gVer1"
@@ -110,12 +109,11 @@
 
     <EditText
         android:id="@+id/edNombre_Regis"
+        style="@style/EdMenu"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:autofillHints="@string/nombre"
-        style="@style/EdMenu"
         android:hint="@string/nombre"
-        android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/gHor3"
         app:layout_constraintEnd_toStartOf="@+id/gVer2"
         app:layout_constraintStart_toStartOf="@+id/gVer1"
@@ -123,12 +121,11 @@
 
     <EditText
         android:id="@+id/edApellido_Regis"
+        style="@style/EdMenu"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:autofillHints="@string/apellidos"
-        style="@style/EdMenu"
         android:hint="@string/apellidos"
-        android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/gHor4"
         app:layout_constraintEnd_toStartOf="@+id/gVer2"
         app:layout_constraintStart_toStartOf="@+id/gVer1"
@@ -136,12 +133,12 @@
 
     <EditText
         android:id="@+id/edTelef_Regis"
+        style="@style/EdMenu"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:autofillHints="@string/telefono"
-        style="@style/EdMenu"
         android:hint="@string/telefono"
-        android:inputType="textPassword"
+        android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/gHor5"
         app:layout_constraintEnd_toStartOf="@+id/gVer2"
         app:layout_constraintStart_toStartOf="@+id/gVer1"

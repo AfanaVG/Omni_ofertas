@@ -17,12 +17,25 @@ class RegistroActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_registro)
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         btConfirmar_regis.setOnClickListener(this)
+        btLimpiar_regis.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         when(v){
             btConfirmar_regis -> registrarUsuario()
+            btLimpiar_regis -> limpiarCampos()
         }
+    }
+
+    private fun limpiarCampos(){
+
+        edEmail_Regis.text.clear();
+        edApellido_Regis.text.clear();
+        edNombre_Regis.text.clear();
+        edTelef_Regis.text.clear();
+        edPass_Regis.text.clear();
+        edPassR_Regis.text.clear();
+
     }
 
     private fun registrarUsuario(){
@@ -43,25 +56,24 @@ class RegistroActivity : AppCompatActivity(), View.OnClickListener {
             }
         }else{
 
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("Error")
-            builder.setMessage("Introduzca datos por favor")
-            builder.setPositiveButton("Aceptar",null)
-            val dialog: AlertDialog = builder.create()
-            dialog.show()
+            camposVacios()
 
         }
 
     }
 
-    private fun mostar(){
+
+    private fun camposVacios(){
+
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Error")
-        builder.setMessage(edEmail_Regis.text.toString()+" : "+ edPass_Regis.text.toString())
+        builder.setMessage("Introduzca datos por favor")
         builder.setPositiveButton("Aceptar",null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
+
     }
+
 
 
     private fun errorAutentificacion(){
