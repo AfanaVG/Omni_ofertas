@@ -2,9 +2,9 @@ package com.example.omni_ofertas.ui
 
 import android.content.Context
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.view.Menu
-import android.view.View
+import android.view.MenuItem
+import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
@@ -16,17 +16,18 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import com.example.omni_ofertas.R
 import kotlinx.android.synthetic.main.activity_menu_inicio.*
-import kotlinx.android.synthetic.main.activity_menu_inicio.view.*
-import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.nav_header_main.*
 
 enum class ProviderType{
     BASIC,
     GOOGLE
 }
 
-class MenuInicio : AppCompatActivity(), View.OnClickListener {
+class MenuInicio : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
 
@@ -49,34 +50,27 @@ class MenuInicio : AppCompatActivity(), View.OnClickListener {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,R.id.mainActivity
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-
-        //Firebase setup
+        // Setup
 
         val bundle = intent.extras
         val email = bundle?.getString("email")
         val provider = bundle?.getString("provider")
-        setup(email ?: "",provider ?: "")
+        setup(email ?: "",provider ?:"")
 
-        //Guardar datos
+        //Guardado de datos
+
         val prefs = getSharedPreferences(getString(R.string.prefs_file),Context.MODE_PRIVATE).edit()
         prefs.putString("email",email)
         prefs.putString("provider",provider)
         prefs.apply()
-    }
-
-    private fun setup(email: String, provider:String){
-        title = "Inicio"
-
-
 
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -89,7 +83,17 @@ class MenuInicio : AppCompatActivity(), View.OnClickListener {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    override fun onClick(v: View?) {
+    private fun setup(email:String, provider:String){
+        title= "Inicio"
+        nav_header_name?.text = email
+        nav_header_email?.text = provider
 
-    }
+
+
+   }
+
+    
+
+
+
 }

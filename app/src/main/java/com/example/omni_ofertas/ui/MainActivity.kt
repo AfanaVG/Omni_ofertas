@@ -1,5 +1,6 @@
 package com.example.omni_ofertas.ui
 
+import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
@@ -7,13 +8,20 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.example.omni_ofertas.R
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_registro.*
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
+
+    private val GOOGLE_SIGN_IN = 100
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -21,6 +29,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         btRegistro_login.setOnClickListener(this)
         btEntrar_login.setOnClickListener(this)
+        btRegistroGmail_login.setOnClickListener(this)
 
 
         //Google analytics
@@ -29,6 +38,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         bundle.putString("message","Integración de Firebbase completa")
         analytics.logEvent("InitScreen",bundle)
 
+        val prefs = getSharedPreferences(getString(R.string.prefs_file),Context.MODE_PRIVATE).edit()
+        prefs.clear()
+        prefs.apply()
+
+        FirebaseAuth.getInstance().signOut()
+
+
+
 
 
     }
@@ -36,22 +53,40 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         when(view){
             btRegistro_login ->accederRegistro()
-            btEntrar_login -> registrarUsuario()
+            btEntrar_login -> registrarUsuario("simple")
+            btRegistroGmail_login -> registrarUsuario("google")
         }
     }
 
-    private fun registrarUsuario(){
+    private fun registrarUsuario(modo:String){
 
-        if (edEmail_login.text.isNotEmpty() && edPass_login.text.isNotEmpty()){
-            FirebaseAuth.getInstance().signInWithEmailAndPassword(edEmail_login.text.toString()
-                ,edPass_login.text.toString()).addOnCompleteListener{
+        when(modo) {
+            "simple" -> {
 
-                if (it.isSuccessful){
-                    autentificaionCompletada(it.result?.user?.email?:"",ProviderType.BASIC)
-                }else{
-                    errorAutentificacion()
+            if (edEmail_login.text.isNotEmpty() && edPass_login.text.isNotEmpty()) {
+                FirebaseAuth.getInstance().signInWithEmailAndPassword(
+                    edEmail_login.text.toString()
+                    , edPass_login.text.toString()
+                ).addOnCompleteListener {
+
+                    if (it.isSuccessful) {
+                        autentificaionCompletada(it.result?.user?.email ?: "", ProviderType.BASIC)
+                    } else {
+                        errorAutentificacion()
+                    }
+
                 }
+            }
+        }
+            "google"->{
+                val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.default_web_client_id))
+                    .requestEmail()
+                    .build()
 
+                val googleClient = GoogleSignIn.getClient(this, googleConf)
+                googleClient.signOut()
+
+                startActivityForResult(googleClient.signInIntent, GOOGLE_SIGN_IN)
             }
         }
 
@@ -80,10 +115,42 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
 
+
+
     private fun accederRegistro(){
 
         val intent = Intent(this,RegistroActivity::class.java)
         startActivity(intent)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == GOOGLE_SIGN_IN){
+
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+
+            try {
+
+                val account = task.getResult(ApiException::class.java)
+
+                if (account != null) {
+
+                    val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+                    FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
+
+                        if (it.isSuccessful) {
+                            autentificaionCompletada(it.result?.user?.email ?: "", ProviderType.BASIC)
+                        } else {
+                            errorAutentificacion()
+                        }
+                    }
+                }
+
+            }catch (e: ApiException){
+                errorAutentificacion()
+            }
+
+        }
     }
 
 

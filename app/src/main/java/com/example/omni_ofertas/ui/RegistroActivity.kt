@@ -7,22 +7,31 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.example.omni_ofertas.R
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_registro.*
 
 class RegistroActivity : AppCompatActivity(), View.OnClickListener {
+
+    private val GOOGLE_SIGN_IN = 100
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro)
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         btConfirmar_regis.setOnClickListener(this)
+        btRegistroGmail.setOnClickListener(this)
         btLimpiar_regis.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         when(v){
-            btConfirmar_regis -> registrarUsuario()
+            btConfirmar_regis -> registrarUsuario("simple")
+            btRegistroGmail -> registrarUsuario("google")
             btLimpiar_regis -> limpiarCampos()
         }
     }
@@ -38,25 +47,44 @@ class RegistroActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    private fun registrarUsuario(){
+    private fun registrarUsuario(modo:String){
 
 
+        when(modo) {
+            "simple" -> {
+                if (edEmail_Regis.text.isNotEmpty() && edPass_Regis.text.isNotEmpty()) {
+                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(edEmail_Regis.text.toString()
+                            , edPass_Regis.text.toString()).addOnCompleteListener {
 
-        if (edEmail_Regis.text.isNotEmpty() && edPass_Regis.text.isNotEmpty()){
-            FirebaseAuth.getInstance().createUserWithEmailAndPassword(edEmail_Regis.text.toString()
-                ,edPass_Regis.text.toString()).addOnCompleteListener{
 
+                        if (it.isSuccessful) {
+                            autentificaionCompletada()
+                        } else {
+                            errorAutentificacion()
+                        }
 
-                if (it.isSuccessful){
-                    autentificaionCompletada()
-                }else{
-                    errorAutentificacion()
+                    }
+                } else {
+
+                    camposVacios()
+
                 }
+            }
+
+            "google" -> {
+
+
+                    val googleConf = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.default_web_client_id))
+                            .requestEmail()
+                            .build()
+
+                    val googleClient = GoogleSignIn.getClient(this, googleConf)
+                    googleClient.signOut()
+
+                    startActivityForResult(googleClient.signInIntent, GOOGLE_SIGN_IN)
+
 
             }
-        }else{
-
-            camposVacios()
 
         }
 
@@ -95,6 +123,36 @@ class RegistroActivity : AppCompatActivity(), View.OnClickListener {
         val dialog: AlertDialog = builder.create()
         dialog.show()
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == GOOGLE_SIGN_IN){
+
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+
+            try {
+
+                val account = task.getResult(ApiException::class.java)
+
+                if (account != null) {
+
+                    val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+                    FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener {
+
+                        if (it.isSuccessful) {
+                            autentificaionCompletada()
+                        } else {
+                            errorAutentificacion()
+                        }
+                    }
+                }
+
+            }catch (e:ApiException){
+                errorAutentificacion()
+            }
+
+        }
     }
 
 

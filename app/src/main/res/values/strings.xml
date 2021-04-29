@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">Omni_ofertas</string>
     <string name="email">example@gmail.com</string>
-    <string name="registro">Registro</string>
-    <string name="confirmar">Registrarme</string>
+    <string name="registro">Registrarme</string>
+    <string name="iniciarSesion">Iniciar sesión</string>
+    <string name="iniciarSesionGoogle">Iniciar sesión Google</string>
+    <string name="confirmar">Confirmarl</string>
     <string name="confirmarGmail">Registrarme con Gmail</string>
     <string name="password">Contraseña</string>
     <string name="nombre">Introduzca nombre</string>
@@ -26,4 +28,6 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
