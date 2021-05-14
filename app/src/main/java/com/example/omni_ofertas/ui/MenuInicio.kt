@@ -1,9 +1,11 @@
 package com.example.omni_ofertas.ui
 
+import OfertasAdapter
 import android.content.Context
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.LinearLayout
 import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
@@ -17,7 +19,10 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.omni_ofertas.R
+import com.example.videoclub.adapter.OfertasViewHolder
 import kotlinx.android.synthetic.main.activity_menu_inicio.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.nav_header_main.*
@@ -31,11 +36,20 @@ class MenuInicio : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
 
+    private  var layoutManager:RecyclerView.LayoutManager? = null
+    private var adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu_inicio)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
+
+        layoutManager = LinearLayoutManager(this)
+
+        adapter = OfertasAdapter()
+
+
 
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
